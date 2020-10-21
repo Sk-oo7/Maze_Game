@@ -28,7 +28,200 @@
   }
   </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+horizontal=1
+vertical=1
+score=0
+p1=0
+p2=1
+arr=[[1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+     [1,0,0,0,1,0,0,0,0,1,0,0,0,1],
+     [1,0,1,0,1,1,0,1,0,1,0,1,0,1],
+     [1,0,1,0,0,1,0,1,0,1,0,1,0,1],
+     [1,0,1,1,1,1,0,1,0,0,0,1,0,1],
+     [1,0,0,0,0,1,0,1,1,1,1,1,0,1],
+     [1,1,1,1,0,0,0,1,0,0,0,0,0,1],
+     [1,0,0,0,0,1,0,0,0,1,0,1,1,1],
+     [1,0,1,1,1,1,1,1,1,1,0,1,0,1],
+     [1,0,0,0,0,0,0,1,0,0,0,1,0,1],
+     [1,1,1,1,1,1,0,1,1,1,0,0,0,1],
+     [1,0,0,0,1,0,0,0,0,0,0,1,1,1],
+     [1,0,1,0,0,0,1,0,1,1,0,0,0,1],
+     [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+];
+$(document).ready(function(){
+  $("#btn2").click(function(){
+    if(horizontal<12 && horizontal>=1 && arr[vertical][horizontal+1]==0)
+{    horizontal=horizontal+1;
+  score=score+1;
+    $("#ball").animate({ left:"+=50px"});
+  }
+  if(p1==0)
+    $("#ipt1").val(score);
+  if(p1==1)
+      $("#ipt2").val(score);
+  if(vertical==12 && horizontal==12)
+  {
+    $("#ball").animate({top:"55px"});
+      $("#ball").animate({left:"55px"});
+      vertical=1
+       horizontal=1
 
+
+       if(p1==1)
+       {
+      if( $("#ipt1").val() > $("#ipt2").val())
+        $("#y1").append("Player 2 is winner<br>")
+        if( $("#ipt2").val() > $("#ipt1").val())
+          $("#y1").append("Player 1 is winner<br>")
+          if( $("#ipt2").val() == $("#ipt1").val())
+            $("#y1").append("Draw<br>")
+             score=0
+
+    }
+
+       if(p1==0)
+       {
+         p1=1
+       score=0
+     }
+
+  }
+  });
+$("#btn1").click(function(){
+    if(horizontal<=12 && horizontal>1 && arr[vertical][horizontal-1]==0)
+    {
+      horizontal=horizontal-1;
+      score=score+1;
+    $("#ball").animate({left:"-=50px"});
+  }
+  if(p1==0)
+    $("#ipt1").val(score);
+    if(p1==1)
+      $("#ipt2").val(score);
+  if(vertical==12 && horizontal==12)
+  {
+    $("#ball").animate({top:"55px"});
+      $("#ball").animate({left:"55px"});
+       vertical=1
+        horizontal=1
+
+        if(p1==1)
+        {
+       if( $("#ipt1").val() > $("#ipt2").val())
+         $("#y1").append("Player 2 is winner<br>")
+         if( $("#ipt2").val() > $("#ipt1").val())
+           $("#y1").append("Player 1 is winner<br>")
+           if( $("#ipt2").val() == $("#ipt1").val())
+             $("#y1").append("Draw<br>")
+              score=0
+      }
+
+        if(p1==0)
+        {
+
+        p1=1
+        score=0
+      }
+
+
+
+  }
+  });
+  $("#btn4").click(function(){
+    if(vertical<12 && vertical>=1 && arr[vertical+1][horizontal]==0)
+    {
+      vertical=vertical+1;
+      score=score+1;
+    $("#ball").animate({top: "+=50px"});
+  }
+  if(p1==0)
+    $("#ipt1").val(score);
+   if(p1==1)
+      $("#ipt2").val(score);
+  if(vertical==12 && horizontal==12)
+  {
+    $("#ball").animate({top:"55px"});
+      $("#ball").animate({left:"55px"});
+      vertical=1
+      horizontal=1
+
+      if(p1==1)
+      {
+     if( $("#ipt1").val() > $("#ipt2").val())
+       $("#y1").append("Player 2 is winner<br>")
+       if( $("#ipt2").val() > $("#ipt1").val())
+         $("#y1").append("Player 1 is winner<br>")
+         if( $("#ipt2").val() == $("#ipt1").val())
+           $("#y1").append("Draw<br>")
+           score=0
+    }
+      if(p1==0)
+      {
+
+      p1=1
+
+      score=0
+    }
+
+
+
+  }
+  });
+$("#btn3").click(function(){
+  if(vertical<=12 && vertical>1 && arr[vertical-1][horizontal]==0)
+  {
+    vertical=vertical-1;
+    score=score+1;
+    $("#ball").animate({top:"-=50px"});
+
+  }
+  if(p1==0)
+    $("#ipt1").val(score);
+ if(p1==1)
+      $("#ipt2").val(score);
+  if(vertical==12 && horizontal==12)
+  {
+    $("#ball").animate({top:"55px"});
+      $("#ball").animate({left:"55px"});
+       vertical=1
+        horizontal=1
+
+        if(p1==1)
+        {
+       if( $("#ipt1").val() > $("#ipt2").val())
+         $("#y1").append("Player 2 is winner<br>")
+         if( $("#ipt2").val() > $("#ipt1").val())
+           $("#y1").append("Player 1 is winner<br>")
+           if( $("#ipt2").val() == $("#ipt1").val())
+             $("#y1").append("Draw<br>")
+             score=0
+      }
+      if(p1==0)
+      {
+      p1=1
+      score=0
+    }
+
+
+  }
+  });
+
+
+
+$("#res").click(function(){
+  vertical=1
+   horizontal=1
+      $("#y1").val("")
+        $("#ipt1").val("")
+          $("#ipt2").val("")
+          $("#ball").animate({top:"55px"});
+            $("#ball").animate({left:"55px"});
+            p1=0
+            score=0;
+});
+});
+</script>
 </head>
 <body>
   <center>
